@@ -36,7 +36,8 @@ class TrendingFragment : BaseFragment<FragmentTrendingBinding>() {
                 return super.shouldOverrideUrlLoading(view, request)
             }
         }
-        mBinding.agentWebview.loadUrl(TRENDING_URL)
+        val rootUrl = arguments?.getString("url") ?: TRENDING_URL
+        mBinding.agentWebview.loadUrl(rootUrl)
     }
 
     override fun onPause() {

@@ -15,6 +15,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         const val TAG = "HomeFragment"
     }
 
+    val homeTabUrl = mapOf(
+        "Explore" to "https://github.com/explore",
+        "Trend" to "https://github.com/trending",
+        "Events" to "https://github.com/events",
+        "Sponsors" to "https://github.com/sponsors/explore",
+    )
+
     override fun getDataBindingClass(): Class<FragmentHomeBinding> {
         return FragmentHomeBinding::class.java
     }
@@ -25,12 +32,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     private fun initView() {
+        val fragmentItems = FragmentPagerItems.with(requireContext())
+        homeTabUrl.entries.forEach { entry ->
+            fragmentItems.add(
+                entry.key,
+                TrendingFragment::class.java,
+                Bundle().apply { putString("url", entry.value) })
+        }
         val adapter = FragmentPagerItemAdapter(
             childFragmentManager,
-            FragmentPagerItems.with(requireContext())
-                .add("Trending", TrendingFragment::class.java)
-                .add("MyRepositories", MyRepositoryFragment::class.java)
-                .create()
+            fragmentItems.create()
         )
         mBinding.viewpager.adapter = adapter
         mBinding.viewpagertab.setViewPager(mBinding.viewpager)
