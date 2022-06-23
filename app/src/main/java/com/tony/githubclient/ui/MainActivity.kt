@@ -8,7 +8,7 @@ import com.permissionx.guolindev.PermissionX
 import com.tony.githubclient.R
 import com.tony.githubclient.base.BaseActivity
 import com.tony.githubclient.databinding.ActivityMainBinding
-import com.tony.githubclient.ui.account.ProfileFragment
+import com.tony.githubclient.ui.profile.ProfileFragment
 import com.tony.githubclient.ui.home.HomeFragment
 import com.tony.githubclient.ui.login.LoginWebActivity
 import com.tony.githubclient.utils.LoginUtils

@@ -1,4 +1,4 @@
-package com.tony.githubclient.ui.account
+package com.tony.githubclient.ui.profile
 
 import android.os.Bundle
 import android.view.View

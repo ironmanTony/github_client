@@ -1,4 +1,4 @@
-package com.tony.githubclient.ui.account
+package com.tony.githubclient.ui.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.blankj.utilcode.util.LogUtils
 import com.tony.githubclient.model.UserData
 import com.tony.githubclient.net.getGitHubApi
-import com.tony.githubclient.utils.LoginUtils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
