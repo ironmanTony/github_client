@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -43,22 +44,25 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text='@{"name:"+data.name}' />
+                android:layout_height="wrap_content"
+                android:text='@{"name:"+data.name}'
+                tools:text="name" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text='@{"email:"+data.email}' />
+                android:layout_height="wrap_content"
+                android:text='@{"email:"+data.email}'
+                tools:text="name" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text='@{"location:"+data.location}' />
+                android:layout_height="wrap_content"
+                android:text='@{"location:"+data.location}'
+                tools:text="name" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text='@{"company:"+data.company}' />
 
 
