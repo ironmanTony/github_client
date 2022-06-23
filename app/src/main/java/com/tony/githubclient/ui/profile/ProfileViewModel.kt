@@ -1,5 +1,6 @@
 package com.tony.githubclient.ui.profile
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -27,7 +28,8 @@ class ProfileViewModel : ViewModel() {
                         mUserLiveData.postValue(true)
                     }
                 } catch (e: Exception) {
-                    LogUtils.e(e)
+//                    LogUtils.e(e.toString())
+                    Log.e("Profile", "getUerInfo", e)
                 }
             }
         }

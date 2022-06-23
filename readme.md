@@ -12,6 +12,6 @@ a simple github client
 - [x] BaseActivity
 
 
-> 前期想要做一个什么样的客户端花了比较多时间
+> 前期想要做一个什么样的客户端花了比较多时间,页面结构也会有重构
 
 

@@ -10,7 +10,7 @@ class TokenInterceptor : Interceptor {
         val token = SPStaticUtils.getString("token")
         return if (token.isNullOrEmpty().not()) {
             val request = chain.request().newBuilder()
-                .addHeader("token", token)
+                .addHeader("Authorization", "token $token")
                 .build()
             chain.proceed(request)
         } else {
