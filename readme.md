@@ -11,6 +11,7 @@ a simple github client
 - [x] 三个设计模式, (策略，职责链（okhttp拦截器的使用），构造器builder（uri等的构造）)
 - [x] BaseActivity
 
-前期想要做一个什么样的客户端花了比较多时间
+
+> 前期想要做一个什么样的客户端花了比较多时间
 
 
