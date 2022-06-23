@@ -1,13 +1,17 @@
 package com.tony.githubclient.ui
 
+import android.Manifest
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.permissionx.guolindev.PermissionX
 import com.tony.githubclient.R
 import com.tony.githubclient.base.BaseActivity
 import com.tony.githubclient.databinding.ActivityMainBinding
-import com.tony.githubclient.ui.account.AccountFragment
+import com.tony.githubclient.ui.account.ProfileFragment
 import com.tony.githubclient.ui.home.HomeFragment
+import com.tony.githubclient.ui.login.LoginWebActivity
+import com.tony.githubclient.utils.LoginUtils
 
 class MainActivity : BaseActivity() {
 
@@ -18,6 +22,15 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         initView()
+        requestSdCardPermission()
+    }
+
+    private fun requestSdCardPermission() {
+        PermissionX.init(this)
+            .permissions(mutableListOf(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            .request { allGranted, grantedList, deniedList ->
+                //todo use permission
+            }
     }
 
     private fun initView() {
@@ -31,7 +44,7 @@ class MainActivity : BaseActivity() {
         }
         switchSelect(1)
         showIndex = 1
-        hideFragment(AccountFragment.TAG)
+        hideFragment(ProfileFragment.TAG)
         showFragment(HomeFragment.TAG) {
             HomeFragment()
         }
@@ -58,12 +71,24 @@ class MainActivity : BaseActivity() {
         if (showIndex == 2) {
             return
         }
+        if (checkAnd2Login()) {
+            return
+        }
         switchSelect(2)
         showIndex = 2
         hideFragment(HomeFragment.TAG)
-        showFragment(AccountFragment.TAG) {
-            AccountFragment()
+        showFragment(ProfileFragment.TAG) {
+            ProfileFragment()
         }
+    }
+
+    private fun checkAnd2Login(): Boolean {
+        if (LoginUtils.isLogin().not()) {
+//            startActivity(Intent(this, LoginActivity::class.java))
+            LoginWebActivity.startLogin(this)
+            return true
+        }
+        return false
     }
 
     private fun showFragment(tag: String, newInstance: () -> Fragment) {

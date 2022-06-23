@@ -7,9 +7,10 @@ import android.view.KeyEvent
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.just.agentweb.AgentWeb
+import com.just.agentweb.WebViewClient
 import com.tony.githubclient.base.BaseActivity
 
-class WebViewActivity : BaseActivity() {
+open class WebViewActivity : BaseActivity() {
 
     companion object {
         fun start(context: Context, url: String?) {
@@ -40,6 +41,7 @@ class WebViewActivity : BaseActivity() {
         mWebView = AgentWeb.with(this)
             .setAgentWebParent(content, LinearLayout.LayoutParams(-1, -1))
             .useDefaultIndicator()
+            .apply { getWebViewClient()?.let { setWebViewClient(it) } }
             .createAgentWeb()
             .ready()
             .go(url)
@@ -49,6 +51,10 @@ class WebViewActivity : BaseActivity() {
     override fun onPause() {
         super.onPause()
         mWebView.webLifeCycle.onPause()
+    }
+
+    open fun getWebViewClient(): WebViewClient? {
+        return null
     }
 
     override fun onResume() {
